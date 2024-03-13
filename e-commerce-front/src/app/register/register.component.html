@@ -1,0 +1,95 @@
+<!-- header -->
+<app-header></app-header>
+
+<div style="margin-top: 80px">
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <a routerLink="" class="btn btn-primary"> Back To Home</a>
+
+    <div class="row border shadow p-5 mt-4">
+      <div class="col-lg-6">
+        <img
+          src="https://png.pngtree.com/png-vector/20191003/ourmid/pngtree-user-login-or-authenticate-icon-on-gray-background-flat-icon-ve-png-image_1786166.jpg"
+          alt="no image"
+          class="img-fluid"
+        />
+      </div>
+
+      <div class="col-lg-6 bg-primary">
+        <div style="height: 100%" class="d-flex flex-column align-items-center">
+          <h3 class="fw-bolder">Welcome User</h3>
+
+          <form [formGroup]="registerForm" (ngSubmit)="register()" class="mt-5">
+            <!-- username -->
+            <div class="mb-3">
+              <input
+                type="text"
+                placeholder="user name"
+                class="form-control"
+                formControlName="username"
+              />
+            </div>
+            <!-- error div -->
+            <div
+              *ngIf="
+                this.registerForm.get('username')?.errors &&
+                this.registerForm.get('username')?.touched
+              "
+              class="fw-bolder text-danger mb-3"
+            >
+              Invalid UserName
+            </div>
+            <!-- email -->
+            <div class="mb-3">
+              <input
+                type="text"
+                placeholder="email id please!!!"
+                class="form-control"
+                formControlName="email"
+              />
+            </div>
+            <!-- error div -->
+            <div
+              *ngIf="
+                this.registerForm.get('email')?.errors &&
+                this.registerForm.get('email')?.touched
+              "
+              class="fw-bolder text-danger mb-3"
+            >
+              Invalid email
+            </div>
+            <!-- password -->
+            <div class="mb-3">
+              <input
+                type="password"
+                placeholder="email your password"
+                class="form-control"
+                formControlName="password"
+              />
+            </div>
+            <!-- error div -->
+            <div
+              *ngIf="
+                this.registerForm.get('password')?.errors &&
+                this.registerForm.get('password')?.touched
+              "
+              class="fw-bolder text-danger mb-3"
+            >
+              Invalid Password
+            </div>
+
+            <input
+              type="submit"
+              class="btn btn-light mt-3 mb-4"
+              value="Register"
+            />
+          </form>
+
+          <p>
+            Already a User
+            <a class="text-light" routerLink="/user/login">Login</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
